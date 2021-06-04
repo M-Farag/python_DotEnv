@@ -34,7 +34,21 @@ class DotEnv:
 		with open(self.file_name,'w') as configfile:
 			self.config.write(configfile)
 	
+	'''
+	' Check if the Env file exists
+	' @auther Mina <mina.farag@icloud.com>
+	'''
+	def is_file_exist(self):
+		return path.exists(self.file_name)
+	
+	'''
+	' Read from the env file
+	' you will provide the key and the method will return the value
+	' @auther Mina <mina.farag@icloud.com>
+	'''
+	def read(self,key_name:str,section='main'):
+		if self.is_file_exist():
+			self.config.read(self.file_name)
+			return self.config[section].get(key_name)
 
-	def is_exist(self):
-		return path. exists(self.file_name)
 
