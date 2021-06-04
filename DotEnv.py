@@ -51,4 +51,10 @@ class DotEnv:
 			self.config.read(self.file_name)
 			return self.config[section].get(key_name)
 
-
+	def write(self,key_value:list,section='main'):
+		if self.is_file_exist():
+			self.config.read(self.file_name)
+			temp = self.config[section]
+			temp[key_value[0]] = key_value[1]
+			with open(self.file_name,'w') as configfile:
+				self.config.write(configfile)
